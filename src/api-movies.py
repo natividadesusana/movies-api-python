@@ -1,18 +1,27 @@
 import requests
 import json
 
-req = None
+def requisicao(titulo):
+    try:
+        req = requests.get('https://www.omdbapi.com/?apikey=e9409fce&t=Divergent')
+        dicionario = json.loads(req.text)
+        return dicionario
+    except:
+        print('Erro na conexão!!')
+        return None
 
-try:
-    req = requests.get('https://www.omdbapi.com/?apikey=e9409fce&t=Divergent')
+def print_detalhes(filme):
+    print('Titulo Filme: ', filme['Title'])
+    print('Ano: ', filme['Year'])
+    print('Atores: ', filme['Actors'])
+    print('Diretores: ', filme['Director'])
+    print('Nota: ', filme['imdbRating'])
 
-except:
-    print('Erro na conexão!!')
+sair = False
+while not sair:
+    opcao = input('Escreva o nome de um Filme ou SAIR para fechar: ').upper
 
-dicionario = json.loads(req.text)
-print(dicionario)
-print('Titulo Filme: ', dicionario['Title'])
-print('Ano: ', dicionario['Year'])
-print('Atores: ', dicionario['Actors'])
-print('Diretores: ', dicionario['Director'])
-print('Nota: ', dicionario['imdbRating'])
+    if opcao == 'SAIR':
+        sair = True
+    else:
+        filme = requisicao(opcao)
