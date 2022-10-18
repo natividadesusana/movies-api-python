@@ -2,4 +2,4 @@
 
 # APIMovies-Python
 
- 🐍 Criando uma API com uma requisição GET para retornar a pesquisa de filmes ~
+ 🐍 Creating an API with a GET request to return the movie search ~
